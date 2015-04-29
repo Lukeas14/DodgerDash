@@ -1,0 +1,13 @@
+API URLs:
+
+Tweets: http://gd2.mlb.com/components/game/mlb/twitter/teams/dodgersTweets.json
+
+MLB Notifications: http://gd2.mlb.com/components/game/mlb/notifications.json
+
+Media Thumbnails: http://gd2.mlb.com/components/game/mlb/year_2015/media/
+
+Batters stats: http://gd2.mlb.com/components/game/mlb/year_2015/batters/
+
+Pitchers stats: http://gd2.mlb.com/components/game/mlb/year_2015/pitchers/
+
+Game data: http://gd2.mlb.com/components/game/mlb/year_2015/month_04/day_29/
