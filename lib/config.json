@@ -6,13 +6,30 @@
 				"twitter": "mlb/twitter/teams/%sTweets.json"
 			}
 		},
+		"lookup": {
+			"base_uri": "http://mlb.mlb.com/lookup/named.",
+			"uris": {
+				"teams": "team_all_season.bam?league_id=%d&season=%d",
+				"team": "team_all.bam?team_id=%d",
+				"players_by_team": "roster_all.bam?team_id=%d",
+				"player": "player_info.bam?player_id=%d&sport_code=%27mlb%27"
+			}
+		},
 		"team_schedule": "http://mlb.mlb.com/soa/ical/schedule.csv?team_id=%d&season=%d"
 	},
-	"teams_by_id": {
+	"teams": {
 		"119": {
-			"name": "Dodgers",
+			"twitterName": "dodgers",
 			"abbrv1": "lan",
 			"abbrv2": "lad"
+		}
+	},
+	"leagues": {
+		"national": {
+			"id": "104"
+		},
+		"american": {
+			"id": "103"
 		}
 	}
 }
