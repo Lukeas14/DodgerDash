@@ -1,11 +1,18 @@
 {
 	"apis": {
-		"mlb_gameday": {
+		"gameday": {
 			"base_uri": "http://gd2.mlb.com/components/game/",
 			"uris": {
-
+				"twitter": "mlb/twitter/teams/%sTweets.json"
 			}
 		},
 		"team_schedule": "http://mlb.mlb.com/soa/ical/schedule.csv?team_id=%d&season=%d"
+	},
+	"teams_by_id": {
+		"119": {
+			"name": "Dodgers",
+			"abbrv1": "lan",
+			"abbrv2": "lad"
+		}
 	}
 }

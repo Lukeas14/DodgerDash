@@ -1,11 +1,7 @@
 var http = require('http'),
 	util = require('util'),
 	config = require('./lib/config.json'),
-	cacheManager = require('./lib/cacheManager'),
-	test = require('./test');
-//console.log(config);
-//
-//console.log(util.format(config.apis.team_schedule, 119, 2015));
+	cacheManager = require('./lib/cacheManager');
 
 cacheManager.init();
 
