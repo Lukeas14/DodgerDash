@@ -1,0 +1,11 @@
+{
+	"apis": {
+		"mlb_gameday": {
+			"base_uri": "http://gd2.mlb.com/components/game/",
+			"uris": {
+
+			}
+		},
+		"team_schedule": "http://mlb.mlb.com/soa/ical/schedule.csv?team_id=%d&season=%d"
+	}
+}
