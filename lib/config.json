@@ -3,7 +3,10 @@
 		"gameday": {
 			"base_uri": "http://gd2.mlb.com/components/game/",
 			"uris": {
-				"twitter": "mlb/twitter/teams/%sTweets.json"
+				"twitter": "mlb/twitter/teams/%sTweets.json",
+				"batter_stats": "mlb/year_%d/batters/%d.xml",
+				"pitcher_stats": "mlb/year_%d/pitchers/%d.xml",
+				"game": "mlb/year_%d/month_%d/day_%d/gid_%d_%d_%d_%smlb_%smlb_1"
 			}
 		},
 		"lookup": {
