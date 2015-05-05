@@ -9,10 +9,12 @@ var gulp = require('gulp'),
 			'./bower_components/bootstrap/less'
 		],
 		jsFiles: [
+			'./bower_components/lodash/lodash.js',
 			'./bower_components/jquery/dist/jquery.js',
 			'./bower_components/moment/moment.js',
 			'./bower_components/react/react.js',
-			'./public/build/react/**/*.js'
+			'./public/build/react/components/**/*.js',
+			'./public/build/react/dashboard.js'
 		]
 	};
 
