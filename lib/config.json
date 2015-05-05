@@ -6,7 +6,7 @@
 				"twitter": "mlb/twitter/teams/%sTweets.json",
 				"batter_stats": "mlb/year_%d/batters/%d.xml",
 				"pitcher_stats": "mlb/year_%d/pitchers/%d.xml",
-				"game": "mlb/year_%d/month_%d/day_%d/gid_%d_%d_%d_%smlb_%smlb_1"
+				"game": "mlb/year_%s/month_%s/day_%s/gid_%s_%s_%s_%smlb_%smlb_1/linescore.json"
 			}
 		},
 		"lookup": {
