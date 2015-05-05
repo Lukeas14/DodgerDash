@@ -1,15 +1,3 @@
-var schedule = [
-	{
-		name: 'Dodgers at Angels'
-	},
-	{
-		name: 'Dodgers at Giants'
-	},
-	{
-		name: 'D-Backs at Dodgers'
-	}
-];
-
 var Schedule = React.createClass({displayName: 'Schedule',
 	loadTeam: function(){
 		console.log('loading team');
@@ -31,24 +19,28 @@ var Schedule = React.createClass({displayName: 'Schedule',
 	componentDidMount: function(){
 		console.log('hello');
 		this.loadTeam();
+		setInterval(this.loadTeam, 60000);
 	},
 	render: function(){
 		console.log(this.state.data);
 		var scheduleRows = this.state.data.schedule.map(function(game){
+			var startTime = moment(game.startTime.toString());
 			return(
 				<tr>
 					<td>
 						<strong>{game.name}</strong>
 					</td>
 					<td>
-						{moment(game.startTime.toString()).format("dddd, MMMM DD [at] h:mm:ss a") }
+						{startTime.format("dddd, MMMM DD")}
+						<br/>
+						{startTime.format("h:mm a")}
 					</td>
 				</tr>
 			)
 		});
 		return(
 			<div className="schedule">
-				<table>
+				<table className="table table-condensed">
 					<thead>
 						<th>Name</th>
 						<th>Time</th>
@@ -61,9 +53,10 @@ var Schedule = React.createClass({displayName: 'Schedule',
 		);
 	}
 });
-
+/*
 React.render(
 	//React.createElement(Schedule, null),
 	<Schedule/>,
 	document.getElementById('schedule')
 );
+*/
