@@ -14,8 +14,8 @@ var gulp = require('gulp'),
 			'./bower_components/jquery/dist/jquery.js',
 			'./bower_components/moment/moment.js',
 			'./bower_components/react/react.js',
-			'./js/components/**/*.js',
-			'./js/dashboard.js'
+			'./public/build/react/components/**/*.js',
+			'./public/build/react/dashboard.js'
 		]
 	};
 
