@@ -8,6 +8,7 @@ var gulp = require('gulp'),
 			'./css',
 			'./bower_components/bootstrap/less'
 		],
+		lessFiles: './css/**/*.less',
 		jsFiles: [
 			'./bower_components/lodash/lodash.js',
 			'./bower_components/jquery/dist/jquery.js',
@@ -34,7 +35,7 @@ gulp.task('js', function(){
 
 gulp.task('watch', function(){
 	gulp.watch(config.jsFiles, ['js']);
-	gulp.watch(config.lessPaths, ['css']);
+	gulp.watch(config.lessFiles, ['css']);
 });
 
 gulp.task('default', ['css', 'js', 'watch']);

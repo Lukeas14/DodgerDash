@@ -16,34 +16,67 @@ var Schedule = React.createClass({displayName: 'Schedule',
 			data: {schedule: []}
 		};
 	},
+	sortSchedule: function(schedule){
+		return _.sortBy(schedule, function(game){
+			return game.startTime;
+		});
+	},
+	getDefaultProps: function(){
+		return {
+			schedule: {}
+		};
+	},
 	componentDidMount: function(){
-		console.log('hello');
 		this.loadTeam();
 		setInterval(this.loadTeam, 60000);
 	},
+
 	render: function(){
+		var schedule = this.sortSchedule(this.props.schedule);
 		console.log(this.state.data);
-		var scheduleRows = this.state.data.schedule.map(function(game){
-			var startTime = moment(game.startTime.toString());
+		var scheduleRows = schedule.map(function(game){
+			var now = moment(),
+				startTime = moment(game.startTime.toString()),
+				gameName = game.name.split(" at "),
+				name = (game.homeGame) ? gameName[0] : "@ " + gameName[1],
+				score = "";
+
+			if(now.isAfter(startTime)){
+				var dodgersScore = (game.homeGame) ? game.linescore.home_team_runs : game.linescore.away_team_runs,
+					opponentScore = (game.homeGame) ? game.linescore.away_team_runs : game.linescore.home_team_runs;
+
+				if(game.linescore.status === "In Progress"){
+					score = "   " + dodgersScore + " - " + opponentScore;
+				}
+				else {
+					var result = (parseInt(dodgersScore) > parseInt(opponentScore)) ? 'W' : 'L';
+					score = result + "  " + dodgersScore + " - " + opponentScore;
+				}
+			}
+
 			return(
 				<tr>
 					<td>
-						<strong>{game.name}</strong>
+						<strong>{name}</strong>
 					</td>
 					<td>
-						{startTime.format("dddd, MMMM DD")}
-						<br/>
+						{score}
+					</td>
+					<td>
+						{startTime.format("MMMM DD")},
+						&nbsp;
 						{startTime.format("h:mm a")}
 					</td>
 				</tr>
 			)
 		});
 		return(
-			<div className="schedule">
-				<table className="table table-condensed">
+			<div id="schedule">
+				<table className="table table-condensed table-striped">
 					<thead>
-						<th>Name</th>
-						<th>Time</th>
+						<th></th>
+						<th>Result</th>
+						<th>Gametime</th>
 					</thead>
 					<tbody>
 						{scheduleRows}

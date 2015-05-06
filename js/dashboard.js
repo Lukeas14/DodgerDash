@@ -23,15 +23,17 @@ var Dashboard = React.createClass({displayName: 'Dashboard',
 	render: function(){
 		return(
 			<div className="dashboard row">
-				<div className="col-md-4">
-					<Schedule/>
+				<NextGame game={this.state.team.nextGame}/>
+				<div id="left-column" className="col-md-4">
+					<Schedule schedule={this.state.team.schedule}/>
 				</div>
-				<div className="col-md-8">
-					<Batters players={this.state.team.players} yo="wtf"/>
+				<div id="right-column" className="col-md-8">
+					<Batters players={this.state.team.players}/>
+					<Pitchers players={this.state.team.players}/>
 				</div>
 			</div>
 		);
-	}Team Division and Win/Loss Records: http://gd2.mlb.com/components/game/mlb/google/teams.xml
+	}
 
 });
 
