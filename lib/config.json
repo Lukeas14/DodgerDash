@@ -6,7 +6,8 @@
 				"twitter": "mlb/twitter/teams/%sTweets.json",
 				"batter_stats": "mlb/year_%d/batters/%d.xml",
 				"pitcher_stats": "mlb/year_%d/pitchers/%d.xml",
-				"game": "mlb/year_%s/month_%s/day_%s/gid_%s_%s_%s_%smlb_%smlb_1/linescore.json"
+				"game": "mlb/year_%s/month_%s/day_%s/gid_%s_%s_%s_%smlb_%smlb_1/linescore.json",
+				"standings": "mlb/google/teams.xml"
 			}
 		},
 		"lookup": {
@@ -28,11 +29,53 @@
 		}
 	},
 	"leagues": {
-		"national": {
-			"id": "104"
+		"104": {
+			"id": "104",
+			"name": "National",
+			"abbrv": "NL"
 		},
-		"american": {
-			"id": "103"
+		"103": {
+			"id": "103",
+			"name": "American",
+			"abbrv": "AL"
+		}
+	},
+	"divisions": {
+		"200": {
+			"id": "200",
+			"leagueId": "103",
+			"name": "American League West",
+			"abbrv": "ALW"
+		},
+		"201": {
+			"id": "201",
+			"leagueId": "103",
+			"name": "American League East",
+			"abbrv": "ALE"
+		},
+		"202": {
+			"id": "202",
+			"leagueId": "103",
+			"name": "American League Central",
+			"abbrv": "ALC"
+		},
+		"203": {
+			"id": "203",
+			"leagueId": "104",
+			"name": "National League West",
+			"abbrv": "NLW"
+		},
+		"204": {
+			"id": "204",
+			"leagueId": "104",
+			"name": "National League East",
+			"abbrv": "NLE"
+		},
+		"205": {
+			"id": "205",
+			"leagueId": "104",
+			"name": "National League Central",
+			"abbrv": "NLC"
 		}
 	}
 }

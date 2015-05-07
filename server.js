@@ -5,6 +5,7 @@ var http = require('http'),
 	cacheManager = require('./lib/cacheManager');
 	cache = require('./lib/cache');
 
+cacheManager.initCache();
 setInterval(function() {
 	cacheManager.initCache();
 }, 600000);
