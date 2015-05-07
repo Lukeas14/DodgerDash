@@ -23,7 +23,7 @@ body{
 
 #header{
 	height:20vh;
-	border-bottom:5px solid #1A578A;
+	//border-bottom:5px solid #1A578A;
 
 	img#team-logo{
 		height:15vh;
@@ -69,20 +69,27 @@ body{
 }
 
 #left-column{
-	#schedule{
-		height:74vh;
+	#standings{
+		height:17vh;
 		overflow:auto;
+	}
+	#schedule{
+		height:55vh;
+		overflow:auto;
+		padding-top:15px;
+		border-top:1px dashed @border-color;
 	}
 }
 #right-column{
 	border-left:5px solid #1A578A;
+	height:75vh;
 
 	#batters{
 		height:35vh;
 		overflow:auto;
 	}
 	#pitchers{
-		height:38vh;
+		height:37vh;
 		margin-top:10px;
 		border-top:1px dashed @border-color;
 		overflow:auto;

@@ -73,11 +73,6 @@ var Schedule = React.createClass({displayName: 'Schedule',
 		return(
 			<div id="schedule">
 				<table className="table table-condensed table-striped">
-					<thead>
-						<th></th>
-						<th>Result</th>
-						<th>Gametime</th>
-					</thead>
 					<tbody>
 						{scheduleRows}
 					</tbody>
