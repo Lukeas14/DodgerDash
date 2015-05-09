@@ -67,29 +67,29 @@ var NextGame = React.createClass({displayName: 'NextGame',
 
 		return(
 			<div id="header">
-				<div className="col-md-4">
+				<div className="col-md-4 text-center">
 					<div className="col-xs-6">
 						<img id="team-logo" src={awayLogo}/>
 						<br/>
-						<div className="col-md-6 text-center">({awayRecord})</div>
+						<div>({awayRecord})</div>
 					</div>
 					<div className="col-xs-6">
 						<img id="team-logo" src={homeLogo}/>
 						<br/>
-						<div className="col-md-6 text-center">({homeRecord})</div>
+						<div>({homeRecord})</div>
 					</div>
 				</div>
 				<div id="countdown" className="col-md-4 text-center">{countdown}</div>
 				<div id="next-game-pitchers" className="col-md-4 text-center">
 					<div className="row">
-						<div className="col-md-6">
+						<div className="col-xs-6">
 							<img className="pitcher-img" src={awayPitcherImg}/>
 							<br/>
 							<strong className="pitcher-name">{awayPitcher.first_name} {awayPitcher.last_name}</strong>
 							<br/>
 							<span>{awayPitcher.s_wins}-{awayPitcher.s_losses} | {awayPitcher.era}</span>
 						</div>
-						<div className="col-md-6">
+						<div className="col-xs-6">
 							<img className="pitcher-img" src={homePitcherImg}/>
 							<br/>
 							<strong className="pitcher-name">{homePitcher.first_name} {homePitcher.last_name}</strong>

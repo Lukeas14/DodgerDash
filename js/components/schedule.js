@@ -74,9 +74,9 @@ var Schedule = React.createClass({displayName: 'Schedule',
 			<div id="schedule">
 					<table className="table table-condensed table-striped table-fixed-sched table-hover">
 						<thead>
-							<th width="41%">Opponent</th>
-							<th width="26%">Result</th>
-							<th width="33%">Gametime</th>
+							<th width="115px">Opponent</th>
+							<th width="71px">Result</th>
+							<th width="175px">Gametime</th>
 						</thead>
 						<tbody>
 							{scheduleRows}

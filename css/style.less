@@ -22,7 +22,7 @@ body{
 }
 
 #header{
-	height:20vh;
+	min-height:20vh;
 	border-bottom:5px solid #1A578A;
 
 	img#team-logo{
@@ -38,11 +38,11 @@ body{
 
 
 	#next-game-pitchers{
-		padding-top:7px;
+		padding-bottom:5px;
 
 		img.pitcher-img{
-			width:100px;
-			height:100px;
+			width:90px;
+			height:80px;
 			border-radius:50px;
 		}
 		strong.pitcher-name{
@@ -106,7 +106,9 @@ table{
   height: 65vh;
   display: block;
   overflow-y: auto;
-  width: 100%;
+}
+.table-fixed-sched td {
+	padding:0px 10px !important;
 }
 
 .table-fixed-batter thead {
