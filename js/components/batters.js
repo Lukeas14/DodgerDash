@@ -55,18 +55,20 @@ var Batters = React.createClass({displayName: 'Batters',
 		});
 		return(
 			<div id="batters">
-				<table className="table table-condensed table-striped">
+				<table className="table table-condensed table-striped table-fixed-batter table-hover">
 					<thead>
-						<th></th>
-						<th>Position</th>
-						<th>BA</th>
-						<th>AB</th>
-						<th>H</th>
-						<th>2B</th>
-						<th>3B</th>
-						<th>HR</th>
-						<th>RBI</th>
-						<th>SB</th>
+						<tr>
+							<th width="20%" text-align="left">Batter</th>
+							<th width="10%" text-align="left">Position</th>
+							<th width="5%" text-align="left">BA</th>
+							<th width="5%" text-align="left">AB</th>
+							<th width="10%" text-align="left">H</th>
+							<th width="10%" text-align="left">2B</th>
+							<th width="10%" text-align="left">3B</th>
+							<th width="10%" text-align="left">HR</th>
+							<th width="10%" text-align="left">RBI</th>
+							<th width="10%" text-align="left">SB</th>
+						</tr>
 					</thead>
 					<tbody>
 						{batterRows}

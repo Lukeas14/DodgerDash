@@ -53,9 +53,9 @@ var Pitchers = React.createClass({displayName: 'Pitchers',
 		});
 		return(
 			<div id="pitchers">
-				<table className="table table-condensed table-striped">
+				<table className="table table-condensed table-striped table-fixed-pitcher table-hover">
 					<thead>
-						<th></th>
+						<th>Pitcher</th>
 						<th>ERA</th>
 						<th>WHIP</th>
 						<th>W</th>

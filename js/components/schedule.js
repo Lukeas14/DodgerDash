@@ -72,16 +72,16 @@ var Schedule = React.createClass({displayName: 'Schedule',
 		});
 		return(
 			<div id="schedule">
-				<table className="table table-condensed table-striped">
-					<thead>
-						<th></th>
-						<th>Result</th>
-						<th>Gametime</th>
-					</thead>
-					<tbody>
-						{scheduleRows}
-					</tbody>
-				</table>
+					<table className="table table-condensed table-striped table-fixed-sched table-hover">
+						<thead>
+							<th width="41%">Opponent</th>
+							<th width="26%">Result</th>
+							<th width="33%">Gametime</th>
+						</thead>
+						<tbody>
+							{scheduleRows}
+						</tbody>
+					</table>
 			</div>
 		);
 	}

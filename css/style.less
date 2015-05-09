@@ -69,9 +69,9 @@ body{
 }
 
 #left-column{
+	width:410px;
 	#schedule{
 		height:74vh;
-		overflow:auto;
 	}
 }
 #right-column{
@@ -79,13 +79,11 @@ body{
 
 	#batters{
 		height:35vh;
-		overflow:auto;
 	}
 	#pitchers{
 		height:38vh;
 		margin-top:10px;
-		border-top:1px dashed @border-color;
-		overflow:auto;
+		border-top:2px solid #1A578A;
 	}
 }
 
@@ -93,12 +91,53 @@ table{
 	tr{
 		th{
 			border:none !important;
-			padding:5px 10px !important;
 			color:#EEE;
 		}
 		td{
-			padding:0px 10px !important;
 			border:none !important;
 		}
 	}
+}
+
+.table-fixed-sched thead {
+  display: inline;
+}
+.table-fixed-sched tbody {
+  height: 65vh;
+  display: block;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.table-fixed-batter thead {
+  display: block;
+  width: 62.5vw;
+}
+.table-fixed-batter tbody {
+  height: 31vh;
+  display: block;
+  overflow: auto;
+  width: 62.5vw;
+}
+.table-fixed-batter td {
+	padding:0px 47px 0px 5px !important;
+	border:none !important;
+}
+
+.table-fixed-pitcher thead {
+  display: inline;
+}
+.table-fixed-pitcher tbody {
+  height: 28vh;
+  display: block;
+  overflow: auto;
+  width: 62.5vw;
+}
+.table-fixed-pitcher td {
+	padding:0px 46px 0px 5px !important;
+	border:none !important;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #266497;
 }
