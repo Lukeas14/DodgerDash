@@ -1,4 +1,7 @@
 {
+	"activeTeams": [
+		119
+	],
 	"apis": {
 		"gameday": {
 			"base_uri": "http://gd2.mlb.com/components/game/",
@@ -6,7 +9,10 @@
 				"twitter": "mlb/twitter/teams/%sTweets.json",
 				"batter_stats": "mlb/year_%d/batters/%d.xml",
 				"pitcher_stats": "mlb/year_%d/pitchers/%d.xml",
-				"game": "mlb/year_%s/month_%s/day_%s/gid_%s_%s_%s_%smlb_%smlb_1/linescore.json",
+				"game": "mlb/year_%s/month_%s/day_%s/gid_%s_%s_%s_%smlb_%smlb_1/",
+
+				"linescore": "mlb/year_%s/month_%s/day_%s/gid_%s_%s_%s_%smlb_%smlb_1/linescore.json",
+				"boxscore": "mlb/year_%s/month_%s/day_%s/gid_%s_%s_%s_%smlb_%smlb_1/boxscore.json",
 				"standings": "mlb/google/teams.xml"
 			}
 		},
@@ -20,6 +26,12 @@
 			}
 		},
 		"team_schedule": "http://mlb.mlb.com/soa/ical/schedule.csv?team_id=%d&season=%d"
+	},
+	"cache": {
+		"intervals": {
+			"teamSchedule": 3600000,
+			"gameData": 6000
+		}
 	},
 	"teams": {
 		"119": {
