@@ -2,7 +2,7 @@ var Schedule = React.createClass({displayName: 'Schedule',
 	loadTeam: function(){
 		console.log('loading team');
 		$.ajax({
-			url: '/test',
+			url: '/getTeam/119',
 			dataType: 'json',
 			cache: false,
 			success: function(data){
@@ -40,6 +40,7 @@ var Schedule = React.createClass({displayName: 'Schedule',
 				gameName = game.name.split(" at "),
 				name = (game.homeGame) ? gameName[0] : "@ " + gameName[1],
 				score = "";
+				status = (game.linescore) ? game.linescore.status : 'n/a';
 
 			if(now.isAfter(startTime)){
 				var dodgersScore = (game.homeGame) ? game.linescore.home_team_runs : game.linescore.away_team_runs,
@@ -48,7 +49,10 @@ var Schedule = React.createClass({displayName: 'Schedule',
 				if(game.linescore.status === "In Progress"){
 					score = "   " + dodgersScore + " - " + opponentScore;
 				}
-				else {
+				else if(game.linescore.status === "Postponed"){
+					score = "Postponed";
+				}
+				else{
 					var result = (parseInt(dodgersScore) > parseInt(opponentScore)) ? 'W' : 'L';
 					score = result + "  " + dodgersScore + " - " + opponentScore;
 				}

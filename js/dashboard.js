@@ -3,7 +3,7 @@
 var Dashboard = React.createClass({displayName: 'Dashboard',
 	loadTeam: function(){
 		$.ajax({
-			url: '/test',
+			url: '/getTeam/119',
 			dataType: 'json',
 			cache: false,
 			success: function(data){

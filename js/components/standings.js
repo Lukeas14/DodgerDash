@@ -9,7 +9,7 @@ var Standings = React.createClass({displayName: 'Standings',
 
 		if(!standings.teams){
 			return(
-				<div id="standings">standings</div>
+				<div id="standings"></div>
 			);
 		}
 
