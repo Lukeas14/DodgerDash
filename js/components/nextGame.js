@@ -60,8 +60,12 @@ var NextGame = React.createClass({displayName: 'NextGame',
 			awayLogo = (game.homeGame) ? opponentLogo : teamLogo,
 			homePitcher = game.linescore.home_probable_pitcher,
 			awayPitcher = game.linescore.away_probable_pitcher,
-			homePitcherImg = "http://mlb.mlb.com/images/players/525x330/" + homePitcher.id + ".jpg",
-			awayPitcherImg = "http://mlb.mlb.com/images/players/525x330/" + awayPitcher.id + ".jpg",
+			homePitcherName = homePitcher != null ? homePitcher.first_name + " " + homePitcher.last_name : "Unknown Pitcher",
+			awayPitcherName = awayPitcher != null ? awayPitcher.first_name + " " + awayPitcher.last_name : "Unknown Pitcher",
+			homePitcherStat = homePitcher != null ? homePitcher.s_wins + "-" + homePitcher.s_losses + " | " + homePitcher.era : "N/A",
+			awayPitcherStat = awayPitcher != null ? awayPitcher.s_wins + "-" + awayPitcher.s_losses + " | " + awayPitcher.era : "N/A",
+			homePitcherImg = homePitcher != null ? "http://mlb.mlb.com/images/players/525x330/" + homePitcher.id + ".jpg" : homeLogo,
+			awayPitcherImg = awayPitcher != null ? "http://mlb.mlb.com/images/players/525x330/" + awayPitcher.id + ".jpg" : awayLogo,
 		    homeRecord = game.linescore.home_win + "-" + game.linescore.home_loss,
 		    awayRecord = game.linescore.away_win + "-" + game.linescore.away_loss;
 
@@ -85,16 +89,16 @@ var NextGame = React.createClass({displayName: 'NextGame',
 						<div className="col-xs-6">
 							<img className="pitcher-img" src={awayPitcherImg}/>
 							<br/>
-							<strong className="pitcher-name">{awayPitcher.first_name} {awayPitcher.last_name}</strong>
+							<strong className="pitcher-name">{awayPitcherName}</strong>
 							<br/>
-							<span>{awayPitcher.s_wins}-{awayPitcher.s_losses} | {awayPitcher.era}</span>
+							<span>{awayPitcherStat}</span>
 						</div>
 						<div className="col-xs-6">
 							<img className="pitcher-img" src={homePitcherImg}/>
 							<br/>
-							<strong className="pitcher-name">{homePitcher.first_name} {homePitcher.last_name}</strong>
+							<strong className="pitcher-name">{homePitcherName}</strong>
 							<br/>
-							<span>{homePitcher.s_wins}-{homePitcher.s_losses} | {homePitcher.era}</span>
+							<span>{homePitcherStat}</span>
 						</div>
 					</div>
 				</div>

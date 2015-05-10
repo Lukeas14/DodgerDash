@@ -69,9 +69,9 @@ body{
 }
 
 #left-column{
-	width:410px;
 	#schedule{
 		height:74vh;
+		padding: 0px;
 	}
 }
 #right-column{
@@ -90,56 +90,46 @@ body{
 table{
 	tr{
 		th{
-			border:none !important;
-			color:#EEE;
+		  border:none !important;
+		  color:#EEE;
 		}
 		td{
-			border:none !important;
+		  border:none !important;
 		}
 	}
 }
 
-.table-fixed-sched thead {
-  display: inline;
-}
-.table-fixed-sched tbody {
-  height: 65vh;
+.table-fixed thead, .table-fixed thead tr, .table-fixed thead th, .table-fixed tbody, .table-fixed tbody tr, .table-fixed tbody td {
   display: block;
+}
+.table-fixed thead, .table-fixed thead tr {
+  width: 98%;
+}
+.table-fixed thead th, .table-fixed tbody td {
+  min-height: 30px;
+  display: block;
+  float: left;
+}
+.table-fixed tr:after {
+    content: ' ';
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+.table-fixed-sched tbody {
+  height: 66vh;
   overflow-y: auto;
 }
-.table-fixed-sched td {
-	padding:0px 10px !important;
-}
-
-.table-fixed-batter thead {
-  display: block;
-  width: 62.5vw;
-}
 .table-fixed-batter tbody {
-  height: 31vh;
-  display: block;
-  overflow: auto;
-  width: 62.5vw;
-}
-.table-fixed-batter td {
-	padding:0px 47px 0px 5px !important;
-	border:none !important;
-}
-
-.table-fixed-pitcher thead {
-  display: inline;
+  height:31vh;
+  overflow-y: auto;
 }
 .table-fixed-pitcher tbody {
-  height: 28vh;
-  display: block;
-  overflow: auto;
-  width: 62.5vw;
-}
-.table-fixed-pitcher td {
-	padding:0px 46px 0px 5px !important;
-	border:none !important;
+  height:30vh;
+  overflow-y: auto;
 }
 
-.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+.table-hover tbody tr:hover td {
   background-color: #266497;
 }
