@@ -18,34 +18,34 @@ var Pitchers = React.createClass({displayName: 'Pitchers',
 		var pitcherRows = players.map(function(pitcher){
 			return(
 				<tr>
-					<td>
+					<td className="col-xs-3">
 						{pitcher.name_first_last}
 					</td>
-					<td>
+					<td className="col-xs-1">
 						{pitcher.pitchingStats.era}
 					</td>
-					<td>
+					<td className="col-xs-1">
 						{pitcher.pitchingStats.whip}
 					</td>
-					<td>
+					<td className="col-xs-1">
 						{pitcher.pitchingStats.w}
 					</td>
-					<td>
+					<td className="col-xs-1">
 						{pitcher.pitchingStats.l}
 					</td>
-					<td>
+					<td className="col-xs-1">
 						{pitcher.pitchingStats.s_ip}
 					</td>
-					<td>
+					<td className="col-xs-1">
 						{pitcher.pitchingStats.s_er}
 					</td>
-					<td>
+					<td className="col-xs-1">
 						{pitcher.pitchingStats.s_k}
 					</td>
-					<td>
+					<td className="col-xs-1">
 						{pitcher.pitchingStats.s_bb}
 					</td>
-					<td>
+					<td className="col-xs-1">
 						{pitcher.pitchingStats.s_sv}
 					</td>
 				</tr>
@@ -53,18 +53,18 @@ var Pitchers = React.createClass({displayName: 'Pitchers',
 		});
 		return(
 			<div id="pitchers">
-				<table className="table table-condensed table-striped">
+				<table className="table table-condensed table-striped table-fixed table-fixed-pitcher table-hover">
 					<thead>
-						<th></th>
-						<th>ERA</th>
-						<th>WHIP</th>
-						<th>W</th>
-						<th>L</th>
-						<th>IP</th>
-						<th>ER</th>
-						<th>K</th>
-						<th>BB</th>
-						<th>SV</th>
+						<th className="col-xs-3">Pitcher</th>
+						<th className="col-xs-1">ERA</th>
+						<th className="col-xs-1">WHIP</th>
+						<th className="col-xs-1">W</th>
+						<th className="col-xs-1">L</th>
+						<th className="col-xs-1">IP</th>
+						<th className="col-xs-1">ER</th>
+						<th className="col-xs-1">K</th>
+						<th className="col-xs-1">BB</th>
+						<th className="col-xs-1">SV</th>
 					</thead>
 					<tbody>
 						{pitcherRows}
