@@ -5,14 +5,16 @@ var http = require('http'),
 	cacheManager = require('./lib/cacheManager');
 	cache = require('./lib/cache');
 
+cacheManager.initCache();
 setInterval(function() {
 	cacheManager.initCache();
 }, 600000);
 
 var app = express();
 
-app.get('/test', function(req, res){
-	res.send(JSON.stringify(cache.teams[119]));
+app.get('/getTeam/*', function(req, res){
+	var teamId = parseInt(req.params[0]);
+	res.json(cache.teams[teamId]);
 });
 
 app.use(express.static(__dirname + '/public'));

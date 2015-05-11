@@ -3,7 +3,7 @@
 var Dashboard = React.createClass({displayName: 'Dashboard',
 	loadTeam: function(){
 		$.ajax({
-			url: '/test',
+			url: '/getTeam/119',
 			dataType: 'json',
 			cache: false,
 			success: function(data){
@@ -22,9 +22,11 @@ var Dashboard = React.createClass({displayName: 'Dashboard',
 	},
 	render: function(){
 		return(
-			<div className="dashboard row">
+			<div className="row">
 				<NextGame game={this.state.team.nextGame}/>
+				<div style={{height:'1vh', background:'#1A578A'}}></div>
 				<div id="left-column" className="col-md-5">
+					<Standings standings={this.state.team.standings}/>
 					<Schedule schedule={this.state.team.schedule}/>
 				</div>
 				<div id="right-column" className="col-md-7">

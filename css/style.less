@@ -32,7 +32,7 @@ body{
 	#countdown{
 		font-size:4em;
 		font-weight:100;
-		opacity:0.2;
+		opacity:0.3;
 		padding-top:30px;
 	}
 
@@ -69,19 +69,23 @@ body{
 }
 
 #left-column{
+	#standings{
+		height:20vh;
+	}
 	#schedule{
-		height:74vh;
-		padding: 0px;
+		height:47vh;
+		border-top:2px solid #1A578A;
 	}
 }
 #right-column{
 	border-left:5px solid #1A578A;
+	height:75vh;
 
 	#batters{
 		height:35vh;
 	}
 	#pitchers{
-		height:38vh;
+		height:37vh;
 		margin-top:10px;
 		border-top:2px solid #1A578A;
 	}
@@ -118,7 +122,7 @@ table{
 }
 
 .table-fixed-sched tbody {
-  height: 66vh;
+  max-height: 47vh;
   overflow-y: auto;
 }
 .table-fixed-batter tbody {
@@ -127,6 +131,10 @@ table{
 }
 .table-fixed-pitcher tbody {
   height:30vh;
+  overflow-y: auto;
+}
+.table-fixed-stand tbody {
+  height:15vh;
   overflow-y: auto;
 }
 

@@ -2,7 +2,7 @@ var Schedule = React.createClass({displayName: 'Schedule',
 	loadTeam: function(){
 		console.log('loading team');
 		$.ajax({
-			url: '/test',
+			url: '/getTeam/119',
 			dataType: 'json',
 			cache: false,
 			success: function(data){
@@ -41,6 +41,7 @@ var Schedule = React.createClass({displayName: 'Schedule',
 				gameName = game.name.split(" at "),
 				name = (game.homeGame) ? gameName[0] : "@ " + gameName[1],
 				score = "";
+				status = (game.linescore) ? game.linescore.status : 'n/a';
 
 			if(now.isAfter(startTime)){
 				var dodgersScore = (game.homeGame) ? game.linescore.home_team_runs : game.linescore.away_team_runs,
@@ -49,10 +50,10 @@ var Schedule = React.createClass({displayName: 'Schedule',
 				if(game.linescore.status === "In Progress"){
 					score = "   " + dodgersScore + " - " + opponentScore;
 				}
-				else if(game.linescore.status === "Postponed") {
+				else if(game.linescore.status === "Postponed"){
 					score = "Postponed";
 				}
-				else {
+				else{
 					var result = (parseInt(dodgersScore) > parseInt(opponentScore)) ? 'W' : 'L';
 					score = result + "  " + dodgersScore + " - " + opponentScore;
 				}
@@ -78,18 +79,18 @@ var Schedule = React.createClass({displayName: 'Schedule',
 			)
 		});
 		return(
-				<div id="schedule">
-						<table className="table table-condensed table-striped table-fixed table-fixed-sched table-hover" align="center">
-							<thead>
-								<th className="col-md-3 col-sm-3 col-xs-3">Opponent</th>
-								<th className="col-md-3 col-sm-3 col-xs-3">Result</th>
-								<th className="col-md-6 col-sm-6 col-xs-6">Gametime</th>
-							</thead>
-							<tbody>
-								{scheduleRows}
-							</tbody>
-						</table>
-				</div>
+			<div id="schedule">
+					<table className="table table-condensed table-striped table-fixed table-fixed-sched table-hover" align="center">
+						<thead>
+							<th className="col-md-3 col-sm-3 col-xs-3">Opponent</th>
+							<th className="col-md-3 col-sm-3 col-xs-3">Result</th>
+							<th className="col-md-6 col-sm-6 col-xs-6">Gametime</th>
+						</thead>
+						<tbody>
+							{scheduleRows}
+						</tbody>
+					</table>
+			</div>
 		);
 	}
 });
