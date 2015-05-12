@@ -22,8 +22,8 @@ body{
 }
 
 #header{
-	height:20vh;
-	//border-bottom:5px solid #1A578A;
+	min-height:20vh;
+	border-bottom:5px solid #1A578A;
 
 	img#team-logo{
 		height:15vh;
@@ -38,11 +38,11 @@ body{
 
 
 	#next-game-pitchers{
-		padding-top:7px;
+		padding-bottom:5px;
 
 		img.pitcher-img{
-			width:100px;
-			height:100px;
+			width:90px;
+			height:80px;
 			border-radius:50px;
 		}
 		strong.pitcher-name{
@@ -70,14 +70,11 @@ body{
 
 #left-column{
 	#standings{
-		height:17vh;
-		overflow:auto;
+		height:20vh;
 	}
 	#schedule{
-		height:55vh;
-		overflow:auto;
-		padding-top:15px;
-		border-top:1px dashed @border-color;
+		height:47vh;
+		border-top:2px solid #1A578A;
 	}
 }
 #right-column{
@@ -86,26 +83,61 @@ body{
 
 	#batters{
 		height:35vh;
-		overflow:auto;
 	}
 	#pitchers{
 		height:37vh;
 		margin-top:10px;
-		border-top:1px dashed @border-color;
-		overflow:auto;
+		border-top:2px solid #1A578A;
 	}
 }
 
 table{
 	tr{
 		th{
-			border:none !important;
-			padding:5px 10px !important;
-			color:#EEE;
+		  border:none !important;
+		  color:#EEE;
 		}
 		td{
-			padding:0px 10px !important;
-			border:none !important;
+		  border:none !important;
 		}
 	}
+}
+
+.table-fixed thead, .table-fixed thead tr, .table-fixed thead th, .table-fixed tbody, .table-fixed tbody tr, .table-fixed tbody td {
+  display: block;
+}
+.table-fixed thead, .table-fixed thead tr {
+  width: 98%;
+}
+.table-fixed thead th, .table-fixed tbody td {
+  min-height: 30px;
+  display: block;
+  float: left;
+}
+.table-fixed tr:after {
+    content: ' ';
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+.table-fixed-sched tbody {
+  max-height: 47vh;
+  overflow-y: auto;
+}
+.table-fixed-batter tbody {
+  height:31vh;
+  overflow-y: auto;
+}
+.table-fixed-pitcher tbody {
+  height:30vh;
+  overflow-y: auto;
+}
+.table-fixed-stand tbody {
+  height:15vh;
+  overflow-y: auto;
+}
+
+.table-hover tbody tr:hover td {
+  background-color: #266497;
 }
