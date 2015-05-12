@@ -32,7 +32,8 @@ var Schedule = React.createClass({displayName: 'Schedule',
 	},
 
 	render: function(){
-		var schedule = this.sortSchedule(this.props.schedule);
+		var schedule = this.sortSchedule(this.props.schedule),
+		teamLogo = "http://mlb.mlb.com/mlb/images/devices/600x600/119.png";
 		console.log(this.state.data);
 		var scheduleRows = schedule.map(function(game){
 			var now = moment(),
@@ -57,16 +58,19 @@ var Schedule = React.createClass({displayName: 'Schedule',
 					score = result + "  " + dodgersScore + " - " + opponentScore;
 				}
 			}
+			else if(game.linescore != null && game.linescore.status === "Postponed") {
+				score = "Postponed";
+			}
 
 			return(
 				<tr>
-					<td>
+					<td className="col-md-3 col-sm-3 col-xs-3">
 						<strong>{name}</strong>
 					</td>
-					<td>
+					<td className="col-md-3 col-sm-3 col-xs-3">
 						{score}
 					</td>
-					<td>
+					<td className="col-md-6 col-sm-6 col-xs-6">
 						{startTime.format("MMMM DD")},
 						&nbsp;
 						{startTime.format("h:mm a")}
@@ -76,11 +80,16 @@ var Schedule = React.createClass({displayName: 'Schedule',
 		});
 		return(
 			<div id="schedule">
-				<table className="table table-condensed table-striped">
-					<tbody>
-						{scheduleRows}
-					</tbody>
-				</table>
+					<table className="table table-condensed table-striped table-fixed table-fixed-sched table-hover" align="center">
+						<thead>
+							<th className="col-md-3 col-sm-3 col-xs-3">Opponent</th>
+							<th className="col-md-3 col-sm-3 col-xs-3">Result</th>
+							<th className="col-md-6 col-sm-6 col-xs-6">Gametime</th>
+						</thead>
+						<tbody>
+							{scheduleRows}
+						</tbody>
+					</table>
 			</div>
 		);
 	}
