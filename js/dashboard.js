@@ -25,11 +25,11 @@ var Dashboard = React.createClass({displayName: 'Dashboard',
 			<div className="row">
 				<NextGame game={this.state.team.nextGame}/>
 				<div style={{height:'1vh', background:'#1A578A'}}></div>
-				<div id="left-column" className="col-md-5">
+				<div id="left-column" className="col-md-4">
 					<Standings standings={this.state.team.standings}/>
 					<Schedule schedule={this.state.team.schedule}/>
 				</div>
-				<div id="right-column" className="col-md-7">
+				<div id="right-column" className="col-md-8">
 					<Batters players={this.state.team.players}/>
 					<Pitchers players={this.state.team.players}/>
 				</div>

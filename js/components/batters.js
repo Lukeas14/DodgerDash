@@ -20,34 +20,34 @@ var Batters = React.createClass({displayName: 'Batters',
 		var batterRows = players.map(function(batter){
 			return(
 				<tr>
-					<td className="col-xs-3">
+					<td>
 						{batter.name_first_last}
 					</td>
-					<td className="col-xs-1">
+					<td>
 						{batter.position_txt}
 					</td>
-					<td className="col-xs-1">
+					<td>
 						{batter.battingStats.avg}
 					</td>
-					<td className="col-xs-1">
+					<td>
 						{batter.battingStats.s_ab}
 					</td>
-					<td className="col-xs-1">
+					<td>
 						{batter.battingStats.s_h}
 					</td>
-					<td className="col-xs-1">
+					<td>
 						{batter.battingStats.s_double}
 					</td>
-					<td className="col-xs-1">
+					<td>
 						{batter.battingStats.s_triple}
 					</td>
-					<td className="col-xs-1">
+					<td>
 						{batter.battingStats.s_hr}
 					</td>
-					<td className="col-xs-1">
+					<td>
 						{batter.battingStats.s_rbi}
 					</td>
-					<td className="col-xs-1">
+					<td>
 						{batter.battingStats.s_sb}
 					</td>
 				</tr>
@@ -55,20 +55,18 @@ var Batters = React.createClass({displayName: 'Batters',
 		});
 		return(
 			<div id="batters">
-				<table className="table table-condensed table-striped table-fixed table-fixed-batter table-hover">
+				<table className="table table-condensed table-striped">
 					<thead>
-						<tr>
-							<th className="col-xs-3">Batter</th>
-							<th className="col-xs-1">Pos</th>
-							<th className="col-xs-1">BA</th>
-							<th className="col-xs-1">AB</th>
-							<th className="col-xs-1">H</th>
-							<th className="col-xs-1">2B</th>
-							<th className="col-xs-1">3B</th>
-							<th className="col-xs-1">HR</th>
-							<th className="col-xs-1">RBI</th>
-							<th className="col-xs-1">SB</th>
-						</tr>
+						<th></th>
+						<th>Position</th>
+						<th>BA</th>
+						<th>AB</th>
+						<th>H</th>
+						<th>2B</th>
+						<th>3B</th>
+						<th>HR</th>
+						<th>RBI</th>
+						<th>SB</th>
 					</thead>
 					<tbody>
 						{batterRows}
