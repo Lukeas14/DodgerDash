@@ -16,16 +16,16 @@ var Standings = React.createClass({displayName: 'Standings',
 		var teams = standings.teams.map(function(team){
 			return(
 				<tr>
-					<td className="col-md-6 col-sm-6 col-xs-6">
+					<td>
 						{team.name}
 					</td>
-					<td className="col-md-2 col-sm-2 col-xs-2">
+					<td>
 						{team.wins}
 					</td>
-					<td className="col-md-2 col-sm-2 col-xs-2">
+					<td>
 						{team.losses}
 					</td>
-					<td className="col-md-2 col-sm-2 col-xs-2">
+					<td>
 						{team.gamesBack}
 					</td>
 				</tr>
@@ -33,12 +33,12 @@ var Standings = React.createClass({displayName: 'Standings',
 		});
 		return(
 			<div id="standings">
-				<table className="table table-condensed table-striped table-fixed table-fixed-stand">
+				<table className="table table-condensed table-striped">
 					<thead>
-						<th className="col-md-6 col-sm-6 col-xs-6">Team</th>
-						<th className="col-md-2 col-sm-2 col-xs-2">W</th>
-						<th className="col-md-2 col-sm-2 col-xs-2">L</th>
-						<th className="col-md-2 col-sm-2 col-xs-2">GB</th>
+						<th></th>
+						<th>W</th>
+						<th>L</th>
+						<th>GB</th>
 					</thead>
 					<tbody>
 						{teams}
