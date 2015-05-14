@@ -61,6 +61,9 @@ var Schedule = React.createClass({displayName: 'Schedule',
 			else if(game.linescore != null && game.linescore.status === "Postponed") {
 				score = "Postponed";
 			}
+			else{
+				score = "\u00a0";
+			}
 
 			return(
 				<tr>
