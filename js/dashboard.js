@@ -27,7 +27,7 @@ var Dashboard = React.createClass({displayName: 'Dashboard',
 				<div style={{height:'1vh', background:'#1A578A'}}></div>
 				<div id="left-column" className="col-md-5">
 					<Standings standings={this.state.team.standings}/>
-					<Schedule schedule={this.state.team.schedule}/>
+					<Schedule schedule={this.state.team.schedule} nextGame={this.state.team.nextGame}/>
 				</div>
 				<div id="right-column" className="col-md-7">
 					<Batters players={this.state.team.players}/>
