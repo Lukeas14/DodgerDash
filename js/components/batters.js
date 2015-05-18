@@ -23,31 +23,31 @@ var Batters = React.createClass({displayName: 'Batters',
 					<td className="col-xs-3">
 						{batter.name_first_last}
 					</td>
-					<td className="col-xs-1">
+					<td className="col-xs-1 stats">
 						{batter.position_txt}
 					</td>
-					<td className="col-xs-1">
+					<td className="col-xs-1 stats">
 						{batter.battingStats.avg}
 					</td>
-					<td className="col-xs-1">
+					<td className="col-xs-1 stats">
 						{batter.battingStats.s_ab}
 					</td>
-					<td className="col-xs-1">
+					<td className="col-xs-1 stats">
 						{batter.battingStats.s_h}
 					</td>
-					<td className="col-xs-1">
+					<td className="col-xs-1 stats">
 						{batter.battingStats.s_double}
 					</td>
-					<td className="col-xs-1">
+					<td className="col-xs-1 stats">
 						{batter.battingStats.s_triple}
 					</td>
-					<td className="col-xs-1">
+					<td className="col-xs-1 stats">
 						{batter.battingStats.s_hr}
 					</td>
-					<td className="col-xs-1">
+					<td className="col-xs-1 stats">
 						{batter.battingStats.s_rbi}
 					</td>
-					<td className="col-xs-1">
+					<td className="col-xs-1 stats">
 						{batter.battingStats.s_sb}
 					</td>
 				</tr>

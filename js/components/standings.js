@@ -19,13 +19,13 @@ var Standings = React.createClass({displayName: 'Standings',
 					<td className="col-md-6 col-sm-6 col-xs-6">
 						{team.name}
 					</td>
-					<td className="col-md-2 col-sm-2 col-xs-2">
+					<td className="col-md-2 col-sm-2 col-xs-2 stats">
 						{team.wins}
 					</td>
-					<td className="col-md-2 col-sm-2 col-xs-2">
+					<td className="col-md-2 col-sm-2 col-xs-2 stats">
 						{team.losses}
 					</td>
-					<td className="col-md-2 col-sm-2 col-xs-2">
+					<td className="col-md-2 col-sm-2 col-xs-2 stats">
 						{team.gamesBack}
 					</td>
 				</tr>

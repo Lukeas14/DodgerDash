@@ -21,32 +21,56 @@ body{
 	font-weight:300;
 }
 
-#header{
-	min-height:20vh;
-	border-bottom:5px solid #1A578A;
+
+.stats{
+	color:#7F93B1;
+}
+
+.header{
+
+	.header-align, .header-content{
+		display:inline-block;
+		vertical-align:middle;
+		float:none;
+	}
+	.header-align{
+		height:21vh;
+	}
+
 
 	img#team-logo{
-		height:15vh;
+		width:90px;
 	}
 
 	#countdown{
 		font-size:4em;
 		font-weight:100;
 		opacity:0.3;
-		padding-top:30px;
+		padding-top:15px;
 	}
 
+	img.player-img{
+		width:90px;
+		height:90px;
+		border-radius:50px;
+	}
+	strong.pitcher-name{
+		color:#EEE;
+	}
 
-	#next-game-pitchers{
-		padding-bottom:5px;
+	&#current-game{
 
-		img.pitcher-img{
-			width:90px;
-			height:80px;
-			border-radius:50px;
+		h1.team-score{
+			margin:0;
+			padding:0;
+			font-size:9em;
+			line-height:0.8;
+			opacity:0.2;
 		}
-		strong.pitcher-name{
-			color:#EEE;
+
+		.bso-table{
+			width:100px;
+
 		}
 	}
 }
@@ -60,7 +84,7 @@ body{
 
 
 #dashboard{
-	padding:10px;
+	padding:0px 10px;
 	border:15px solid #1A578A;
 	border-color:#0E538B;
 	height:100%;

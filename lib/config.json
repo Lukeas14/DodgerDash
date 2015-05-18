@@ -30,7 +30,7 @@
 	"cache": {
 		"intervals": {
 			"teamSchedule": 3600000,
-			"gameData": 60000
+			"gameData": 30000
 		}
 	},
 	"teams": {
@@ -38,6 +38,11 @@
 			"twitterName": "dodgers",
 			"abbrv1": "lan",
 			"abbrv2": "lad"
+		},
+		"135": {
+			"twitterName": "padres",
+			"abbrv1": "sdn",
+			"abbrv2": "sdn"
 		}
 	},
 	"leagues": {

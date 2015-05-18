@@ -16,6 +16,9 @@ var Schedule = React.createClass({displayName: 'Schedule',
 
 		//scroll to 5 games before next game
 		for(i=0; i<5; i++){
+			if(!nextGameRow){
+				return;
+			}
 			nextGameRow = nextGameRow.previousSibling;
 		}
 		if(nextGameRow !== null) {
@@ -58,12 +61,12 @@ var Schedule = React.createClass({displayName: 'Schedule',
 				return(
 					<tr id={game.startTimeUNIX}>
 						<td className="col-md-3 col-sm-3 col-xs-3">
-							<strong>{name}</strong>
+							{name}
 						</td>
-						<td className="col-md-3 col-sm-3 col-xs-3">
+						<td className="col-md-3 col-sm-3 col-xs-3 stats">
 							{score}
 						</td>
-						<td className="col-md-6 col-sm-6 col-xs-6">
+						<td className="col-md-6 col-sm-6 col-xs-6 stats">
 							{startTime.format("MMMM DD")},
 							&nbsp;
 							{startTime.format("h:mm a")}
