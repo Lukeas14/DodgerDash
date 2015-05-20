@@ -52,7 +52,7 @@ body{
 	img.player-img{
 		width:90px;
 		height:90px;
-		border-radius:50px;
+		border-radius:45px;
 	}
 	strong.pitcher-name{
 		color:#EEE;
@@ -71,6 +71,66 @@ body{
 		.bso-table{
 			width:100px;
 
+		}
+	}
+
+	table.bases{
+		border-spacing:5px;
+		border-collapse:separate;
+		.rotation(45deg);
+
+		td{
+			width:10px;
+			height:10px;
+			border:1px solid #41698A !important;
+
+			&.active{
+				background:#B1B117;
+			}
+		}
+	}
+
+	table.bso{
+		text-align:left;
+
+		td{
+			padding:0px 3px !important;
+
+			span {
+				display:inline-block;
+				margin:0 3px;
+				width: 10px;
+				height: 10px;
+				border: 1px solid #41698A !important;
+				border-radius: 5px;
+
+				&.active {
+
+				}
+			}
+
+			&.balls span.active{
+				background:#743434;
+			}
+			&.strikes span.active{
+				background:#2C7E2C;
+			}
+			&.outs span.active{
+				background:#B1B117;
+			}
+		}
+	}
+
+	table.linescore{
+		margin-bottom:5px;
+
+		tbody {
+			tr:first-child {
+				background: #074B83;
+			}
+		}
+		td, th{
+			padding:0px 3px !important;
 		}
 	}
 }

@@ -7,3 +7,11 @@
 	-ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(opacity=@{opperc})";
 	filter: ~"alpha(opacity=@{opperc})";
 }
+
+.rotation(@deg:5deg){
+	-webkit-transform: rotate(@deg);
+	-moz-transform: rotate(@deg);
+	-o-transform: rotate(@deg);
+	-ms-transform: rotate(@deg);
+	transform: rotate(@deg);
+}

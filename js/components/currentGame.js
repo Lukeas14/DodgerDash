@@ -48,17 +48,41 @@ var CurrentGame = React.createClass({displayName: 'CurrentGame',
 			teamLosses = (game.homeTeam) ? game.linescore.home_loss : game.linescore.away_loss,
 			teamRuns = (game.homeTeam) ? game.linescore.home_team_runs : game.linescore.away_team_runs,
 			teamHits = (game.homeTeam) ? game.linescore.home_team_hits : game.linescore.away_team_hits,
-			teamErrors = (game.homeTeam) ? game.linescore.home_team_errors : game.linescore.away_team_errors,
-			teamCurrentPlayer = (game.homeTeam && game.linescore.inning_state === "Bottom") ? game.linescore.current_batter : game.linescore.current_pitcher,
+			teamErrors = (game.homeTeam) ? game.linescore.home_team_errors : game.linescore.away_team_errors;
+			if(game.homeTeam){
+				teamCurrentPlayer = (game.linescore.inning_state === "Bottom") ? game.linescore.current_batter : game.linescore.current_pitcher;
+			}
+			else{
+				teamCurrentPlayer = (game.linescore.inning_state === "Bottom") ? game.linescore.current_pitcher : game.linescore.current_batter;
+			}
 			teamCurrentPlayerImg = "http://mlb.mlb.com/images/players/525x330/" + teamCurrentPlayer.id + ".jpg";
+
 			opponentName = (game.homeTeam) ? game.linescore.away_team_name : game.linescore.home_team_name,
 			opponentWins = (game.homeTeam) ? game.linescore.away_win : game.linescore.home_win,
 			opponentLosses = (game.homeTeam) ? game.linescore.away_loss : game.linescore.home_loss,
 			opponentRuns = (game.homeTeam) ? game.linescore.away_team_runs : game.linescore.home_team_runs,
 			opponentHits = (game.homeTeam) ? game.linescore.away_team_hits : game.linescore.home_team_hits,
-			opponentErrors = (game.homeTeam) ? game.linescore.away_team_errors : game.linescore.home_team_errors;
-			opponentCurrentPlayer = (game.homeTeam && game.linescore.inning_state === "Top") ? game.linescore.current_pitcher : game.linescore.current_batter,
+			opponentErrors = (game.homeTeam) ? game.linescore.away_team_errors : game.linescore.home_team_errors
+			if(game.homeTeam){
+				opponentCurrentPlayer = (game.linescore.inning_state === "Bottom") ? game.linescore.current_pitcher : game.linescore.current_batter;
+			}
+			else{
+				opponentCurrentPlayer = (game.linescore.inning_state === "Bottom") ? game.linescore.current_batter : game.linescore.current_pitcher;
+			}
 			opponentCurrentPlayerImg = "http://mlb.mlb.com/images/players/525x330/" + opponentCurrentPlayer.id + ".jpg";
+
+			if(game.linescore.inning_state !== "Middle" || game.linescore.inning_state !== "End") {
+				var runner1b = classNames({'active': game.linescore.runner_on_1b});
+				runner2b = classNames({'active': game.linescore.runner_on_2b});
+				runner3b = classNames({'active': game.linescore.runner_on_3b});
+				bsoB1 = classNames({'active': game.linescore.balls > 0}),
+					bsoB2 = classNames({'active': game.linescore.balls > 1}),
+					bsoB3 = classNames({'active': game.linescore.balls > 2}),
+					bsoS1 = classNames({'active': game.linescore.strikes > 0}),
+					bsoS2 = classNames({'active': game.linescore.strikes > 1}),
+					bsoO1 = classNames({'active': game.linescore.outs > 0}),
+					bsoO2 = classNames({'active': game.linescore.outs > 1});
+			}
 
 		return(
 			<div className="header row" id="current-game">
@@ -71,6 +95,8 @@ var CurrentGame = React.createClass({displayName: 'CurrentGame',
 						<div className="col-md-4">
 							<img id="team-logo" src={teamLogo}/>
 							<br/>
+							<strong>{teamName}</strong>
+							<br/>
 							<span className="stats">({teamWins} - {teamLosses})</span>
 						</div>
 						<div className="col-md-4">
@@ -81,7 +107,47 @@ var CurrentGame = React.createClass({displayName: 'CurrentGame',
 					</div>
 
 					<div className="col-md-4">
-						<table className="table table-condensed">
+						<div className="text-center">
+							<div className="col-md-3">
+								<table className="bases">
+									<tbody>
+										<tr>
+											<td className={runner2b}></td>
+											<td className={runner1b}></td>
+										</tr>
+										<tr>
+											<td className={runner3b}></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+							<div className="text-center col-md-8">
+								<table className="bso">
+									<tbody>
+									<tr>
+										<td>B</td>
+										<td className="balls">
+											<span className={bsoB1}></span>
+											<span className={bsoB2}></span>
+											<span className={bsoB3}></span>
+										</td>
+										<td>S</td>
+										<td className="strikes">
+											<span className={bsoS1}></span>
+											<span className={bsoS2}></span>
+										</td>
+										<td>O</td>
+										<td className="outs">
+											<span className={bsoO1}></span>
+											<span className={bsoO2}></span>
+										</td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<table className="linescore table table-condensed">
 							<thead>
 								<tr>
 									<th></th>
@@ -108,15 +174,18 @@ var CurrentGame = React.createClass({displayName: 'CurrentGame',
 								</tr>
 							</tbody>
 						</table>
+						<div className="col-md-12 text-center stats">{game.linescore.pbp_last}</div>
 					</div>
 					<div className="col-md-4 text-center">
 						<div className="col-md-4">
 							<img className="player-img" src={opponentCurrentPlayerImg}/>
 							<br/>
-							<span>{opponentCurrentPlayer.first_name} {opponentCurrentPlayer.last_name}</span>
+							<span>{opponentCurrentPlayer.first_name}<br/>{opponentCurrentPlayer.last_name}</span>
 						</div>
 						<div className="col-md-4">
 							<img id="team-logo" src={opponentLogo}/>
+							<br/>
+							<strong>{opponentName}</strong>
 							<br/>
 							<span className="stats">({opponentWins} - {opponentLosses})</span>
 						</div>

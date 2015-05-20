@@ -12,6 +12,7 @@ var gulp = require('gulp'),
 		jsFiles: [
 			'./bower_components/lodash/lodash.js',
 			'./bower_components/jquery/dist/jquery.js',
+			'./bower_components/classnames/index.js',
 			'./bower_components/moment/moment.js',
 			'./bower_components/react/react.js',
 			'./public/build/react/components/**/*.js',
