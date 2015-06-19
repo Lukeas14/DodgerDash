@@ -15,6 +15,7 @@ html, body{
 }
 
 body{
+	min-width:1000px;
 	background:#004680;
 	color:#CCC;
 	font-family: 'Open Sans', sans-serif;
@@ -52,7 +53,15 @@ body{
 	img.player-img{
 		width:90px;
 		height:90px;
-		border-radius:45px;
+		border-radius:50%;
+	}
+	img.player-img:after {
+		content: "";
+		width: 100%;
+		background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0) 0%, #FFF 70%, #FFF 100%);
+		height: 100%;
+		display: block;
+		position: absolute;
 	}
 	strong.pitcher-name{
 		color:#EEE;

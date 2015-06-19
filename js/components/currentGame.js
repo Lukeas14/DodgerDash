@@ -34,38 +34,38 @@ var CurrentGame = React.createClass({displayName: 'CurrentGame',
 				return(<th>{inning + 1}</th>);
 			}),
 			teamLinescore = _.range(0, maxInnings).map(function(inning){
-				var inningField = (game.homeTeam) ? 'home_inning_runs' : 'away_inning_runs';
+				var inningField = (game.homeGame) ? 'home_inning_runs' : 'away_inning_runs';
 				var inningScore = (game.linescore.linescore[inning]) ? game.linescore.linescore[inning][inningField] : '';
 				return(<td className="stats">{inningScore}</td>);
 			}),
 			opponentLinescore = _.range(0, maxInnings).map(function(inning){
-				var inningField = (game.homeTeam) ? 'away_inning_runs' : 'home_inning_runs';
+				var inningField = (game.homeGame) ? 'away_inning_runs' : 'home_inning_runs';
 				var inningScore = (game.linescore.linescore[inning]) ? game.linescore.linescore[inning][inningField] : '';
 				return(<td className="stats">{inningScore}</td>);
 			}),
-			teamName = (game.homeTeam) ? game.linescore.home_team_name : game.linescore.away_team_name,
-			teamAbbrv = (game.homeTeam) ? game.linescore.home_name_abbrev : game.linescore.away_name_abbrev,
-			teamWins = (game.homeTeam) ? game.linescore.home_win : game.linescore.away_win,
-			teamLosses = (game.homeTeam) ? game.linescore.home_loss : game.linescore.away_loss,
-			teamRuns = (game.homeTeam) ? game.linescore.home_team_runs : game.linescore.away_team_runs,
-			teamHits = (game.homeTeam) ? game.linescore.home_team_hits : game.linescore.away_team_hits,
-			teamErrors = (game.homeTeam) ? game.linescore.home_team_errors : game.linescore.away_team_errors;
-			if(game.homeTeam){
-				teamCurrentPlayer = (game.linescore.inning_state === "Bottom") ? game.linescore.current_batter : game.linescore.current_pitcher;
+			teamName = (game.homeGame) ? game.linescore.home_team_name : game.linescore.away_team_name,
+			teamAbbrv = (game.homeGame) ? game.linescore.home_name_abbrev : game.linescore.away_name_abbrev,
+			teamWins = (game.homeGame) ? game.linescore.home_win : game.linescore.away_win,
+			teamLosses = (game.homeGame) ? game.linescore.home_loss : game.linescore.away_loss,
+			teamRuns = (game.homeGame) ? game.linescore.home_team_runs : game.linescore.away_team_runs,
+			teamHits = (game.homeGame) ? game.linescore.home_team_hits : game.linescore.away_team_hits,
+			teamErrors = (game.homeGame) ? game.linescore.home_team_errors : game.linescore.away_team_errors;
+			if(game.homeGame){
+				teamCurrentPlayer = (game.linescore.inning_state === "Bottom" || game.linescore.inning_state === "End") ? game.linescore.current_batter : game.linescore.current_pitcher;
 			}
 			else{
-				teamCurrentPlayer = (game.linescore.inning_state === "Bottom") ? game.linescore.current_pitcher : game.linescore.current_batter;
+				teamCurrentPlayer = (game.linescore.inning_state === "Bottom" || game.linescore.inning_state === "End") ? game.linescore.current_pitcher : game.linescore.current_batter;
 			}
 			teamCurrentPlayerImg = "http://mlb.mlb.com/images/players/525x330/" + teamCurrentPlayer.id + ".jpg";
 
-			opponentName = (game.homeTeam) ? game.linescore.away_team_name : game.linescore.home_team_name,
-			opponentAbbrv = (game.homeTeam) ? game.linescore.away_name_abbrev : game.linescore.home_name_abbrev,
-			opponentWins = (game.homeTeam) ? game.linescore.away_win : game.linescore.home_win,
-			opponentLosses = (game.homeTeam) ? game.linescore.away_loss : game.linescore.home_loss,
-			opponentRuns = (game.homeTeam) ? game.linescore.away_team_runs : game.linescore.home_team_runs,
-			opponentHits = (game.homeTeam) ? game.linescore.away_team_hits : game.linescore.home_team_hits,
-			opponentErrors = (game.homeTeam) ? game.linescore.away_team_errors : game.linescore.home_team_errors
-			if(game.homeTeam){
+			opponentName = (game.homeGame) ? game.linescore.away_team_name : game.linescore.home_team_name,
+			opponentAbbrv = (game.homeGame) ? game.linescore.away_name_abbrev : game.linescore.home_name_abbrev,
+			opponentWins = (game.homeGame) ? game.linescore.away_win : game.linescore.home_win,
+			opponentLosses = (game.homeGame) ? game.linescore.away_loss : game.linescore.home_loss,
+			opponentRuns = (game.homeGame) ? game.linescore.away_team_runs : game.linescore.home_team_runs,
+			opponentHits = (game.homeGame) ? game.linescore.away_team_hits : game.linescore.home_team_hits,
+			opponentErrors = (game.homeGame) ? game.linescore.away_team_errors : game.linescore.home_team_errors
+			if(game.homeGame){
 				opponentCurrentPlayer = (game.linescore.inning_state === "Bottom" || game.linescore.inning_state === "End") ? game.linescore.current_pitcher : game.linescore.current_batter;
 			}
 			else{
