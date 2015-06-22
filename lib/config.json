@@ -30,7 +30,7 @@
 	"cache": {
 		"intervals": {
 			"teamSchedule": 3600000,
-			"gameData": 10000
+			"gameData": 5000
 		}
 	},
 	"teams": {
