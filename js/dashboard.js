@@ -19,7 +19,7 @@ var Dashboard = React.createClass({displayName: 'Dashboard',
 	},
 	componentDidMount: function(){
 		this.loadTeam();
-		setInterval(this.loadTeam, 10000);
+		setInterval(this.loadTeam, 5000);
 	},
 	render: function(){
 		if(_.isEmpty(this.state.team.currentGame)){
