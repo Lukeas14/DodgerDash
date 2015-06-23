@@ -29,6 +29,8 @@ var Schedule = React.createClass({displayName: 'Schedule',
 	render: function(){
 		var schedule = this.sortSchedule(this.props.schedule),
 			scheduleRows = schedule.map(function(game){
+				if(typeof game.linescore == 'undefined') return false;
+
 				var now = moment(),
 					startTime = moment(game.startTime.toString()),
 					gameName = game.name.split(" at "),
