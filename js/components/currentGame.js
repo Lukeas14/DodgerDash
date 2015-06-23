@@ -4,12 +4,17 @@ var CurrentGame = React.createClass({displayName: 'CurrentGame',
 			game: null
 		}
 	},
+	getOrdinalNumber: function(n){
+			var s=["th","st","nd","rd"],
+				v=n%100;
+			return n+(s[(v-20)%10]||s[v]||s[0]);
+	},
 	render: function(){
 		var game = this.props.game;
 
 		if(game === null){
 			return(
-				<div id="current-game" className="header">wfwefurrent Game</div>
+				<div id="current-game" className="header"></div>
 			);
 		}
 
@@ -20,7 +25,6 @@ var CurrentGame = React.createClass({displayName: 'CurrentGame',
 
 		//Linescore
 		if(!(game.linescore.linescore instanceof Array)){
-			console.log('linescore', game.linescore.linescore);
 			game.linescore.linescore = [
 				{
 					'away_inning_runs': 0,
@@ -49,42 +53,95 @@ var CurrentGame = React.createClass({displayName: 'CurrentGame',
 			teamLosses = (game.homeGame) ? game.linescore.home_loss : game.linescore.away_loss,
 			teamRuns = (game.homeGame) ? game.linescore.home_team_runs : game.linescore.away_team_runs,
 			teamHits = (game.homeGame) ? game.linescore.home_team_hits : game.linescore.away_team_hits,
-			teamErrors = (game.homeGame) ? game.linescore.home_team_errors : game.linescore.away_team_errors;
-			if(game.homeGame){
-				teamCurrentPlayer = (game.linescore.inning_state === "Bottom" || game.linescore.inning_state === "End") ? game.linescore.current_batter : game.linescore.current_pitcher;
-			}
-			else{
-				teamCurrentPlayer = (game.linescore.inning_state === "Bottom" || game.linescore.inning_state === "End") ? game.linescore.current_pitcher : game.linescore.current_batter;
-			}
-			teamCurrentPlayerImg = "http://mlb.mlb.com/images/players/525x330/" + teamCurrentPlayer.id + ".jpg";
+			teamErrors = (game.homeGame) ? game.linescore.home_team_errors : game.linescore.away_team_errors,
+			inningStatus = (game.linescore.inning_state === 'Top') ? "\u25B2" : "\u25BC";
+			inning = game.linescore.inning;
 
-			opponentName = (game.homeGame) ? game.linescore.away_team_name : game.linescore.home_team_name,
-			opponentAbbrv = (game.homeGame) ? game.linescore.away_name_abbrev : game.linescore.home_name_abbrev,
-			opponentWins = (game.homeGame) ? game.linescore.away_win : game.linescore.home_win,
-			opponentLosses = (game.homeGame) ? game.linescore.away_loss : game.linescore.home_loss,
-			opponentRuns = (game.homeGame) ? game.linescore.away_team_runs : game.linescore.home_team_runs,
-			opponentHits = (game.homeGame) ? game.linescore.away_team_hits : game.linescore.home_team_hits,
-			opponentErrors = (game.homeGame) ? game.linescore.away_team_errors : game.linescore.home_team_errors
-			if(game.homeGame){
-				opponentCurrentPlayer = (game.linescore.inning_state === "Bottom" || game.linescore.inning_state === "End") ? game.linescore.current_pitcher : game.linescore.current_batter;
-			}
-			else{
-				opponentCurrentPlayer = (game.linescore.inning_state === "Bottom" || game.linescore.inning_state === "End") ? game.linescore.current_batter : game.linescore.current_pitcher;
-			}
-			opponentCurrentPlayerImg = "http://mlb.mlb.com/images/players/525x330/" + opponentCurrentPlayer.id + ".jpg";
+		if(game.homeGame){
+			teamCurrentPlayer = (game.linescore.inning_state === "Bottom" || game.linescore.inning_state === "End") ? game.linescore.current_batter : game.linescore.current_pitcher;
+		}
+		else{
+			teamCurrentPlayer = (game.linescore.inning_state === "Bottom" || game.linescore.inning_state === "End") ? game.linescore.current_pitcher : game.linescore.current_batter;
+		}
+		teamCurrentPlayerImg = "http://mlb.mlb.com/images/players/525x330/" + teamCurrentPlayer.id + ".jpg";
 
-			if(game.linescore.inning_state !== "Middle" || game.linescore.inning_state !== "End") {
-				var runner1b = classNames({'active': game.linescore.runner_on_1b});
-				runner2b = classNames({'active': game.linescore.runner_on_2b});
-				runner3b = classNames({'active': game.linescore.runner_on_3b});
+		opponentName = (game.homeGame) ? game.linescore.away_team_name : game.linescore.home_team_name,
+		opponentAbbrv = (game.homeGame) ? game.linescore.away_name_abbrev : game.linescore.home_name_abbrev,
+		opponentWins = (game.homeGame) ? game.linescore.away_win : game.linescore.home_win,
+		opponentLosses = (game.homeGame) ? game.linescore.away_loss : game.linescore.home_loss,
+		opponentRuns = (game.homeGame) ? game.linescore.away_team_runs : game.linescore.home_team_runs,
+		opponentHits = (game.homeGame) ? game.linescore.away_team_hits : game.linescore.home_team_hits,
+		opponentErrors = (game.homeGame) ? game.linescore.away_team_errors : game.linescore.home_team_errors
+		if(game.homeGame){
+			opponentCurrentPlayer = (game.linescore.inning_state === "Bottom" || game.linescore.inning_state === "End") ? game.linescore.current_pitcher : game.linescore.current_batter;
+		}
+		else{
+			opponentCurrentPlayer = (game.linescore.inning_state === "Bottom" || game.linescore.inning_state === "End") ? game.linescore.current_batter : game.linescore.current_pitcher;
+		}
+		opponentCurrentPlayerImg = "http://mlb.mlb.com/images/players/525x330/" + opponentCurrentPlayer.id + ".jpg";
+
+		if(game.linescore.inning_state !== "Middle" || game.linescore.inning_state !== "End") {
+			var runner1b = classNames({'active': game.linescore.runner_on_1b}),
+				runner2b = classNames({'active': game.linescore.runner_on_2b}),
+				runner3b = classNames({'active': game.linescore.runner_on_3b}),
 				bsoB1 = classNames({'active': game.linescore.balls > 0}),
-					bsoB2 = classNames({'active': game.linescore.balls > 1}),
-					bsoB3 = classNames({'active': game.linescore.balls > 2}),
-					bsoS1 = classNames({'active': game.linescore.strikes > 0}),
-					bsoS2 = classNames({'active': game.linescore.strikes > 1}),
-					bsoO1 = classNames({'active': game.linescore.outs > 0}),
-					bsoO2 = classNames({'active': game.linescore.outs > 1});
-			}
+				bsoB2 = classNames({'active': game.linescore.balls > 1}),
+				bsoB3 = classNames({'active': game.linescore.balls > 2}),
+				bsoS1 = classNames({'active': game.linescore.strikes > 0}),
+				bsoS2 = classNames({'active': game.linescore.strikes > 1}),
+				bsoO1 = classNames({'active': game.linescore.outs > 0}),
+				bsoO2 = classNames({'active': game.linescore.outs > 1});
+		}
+
+		if(game.linescore.inning_state === "Top" || game.linescore.inning_state === "Bottom"){
+			var atBat = <div className="text-center at-bat">
+							<div className="col-md-3 text-left">
+								<table className="bases">
+									<tbody>
+									<tr>
+										<td className={runner2b}></td>
+										<td className={runner1b}></td>
+									</tr>
+									<tr>
+										<td className={runner3b}></td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
+							<div className="text-center col-md-7">
+								<table className="bso">
+									<tbody>
+									<tr>
+										<td className="stats">B</td>
+										<td className="balls">
+											<span className={bsoB1}></span>
+											<span className={bsoB2}></span>
+											<span className={bsoB3}></span>
+										</td>
+										<td className="stats">S</td>
+										<td className="strikes">
+											<span className={bsoS1}></span>
+											<span className={bsoS2}></span>
+										</td>
+										<td className="stats">O</td>
+										<td className="outs">
+											<span className={bsoO1}></span>
+											<span className={bsoO2}></span>
+										</td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
+							<div className="text-center col-md-2 current-inning stats">
+								<span className="inning-status">{{ inningStatus }}</span>
+								{{ inning }}
+							</div>
+						</div>;
+		}
+		else {
+			var atBatText = (game.linescore.inning_state) ? game.linescore.inning_state + " of the " + this.getOrdinalNumber(game.linescore.inning) + " inning." : "",
+				atBat = <div className="text-center at-bat">{atBatText}</div>;
+		}
 
 		return(
 			<div className="header row" id="current-game">
@@ -109,46 +166,7 @@ var CurrentGame = React.createClass({displayName: 'CurrentGame',
 					</div>
 
 					<div className="col-md-4">
-						<div className="text-center">
-							<div className="col-md-3 text-left">
-								<table className="bases">
-									<tbody>
-										<tr>
-											<td className={runner2b}></td>
-											<td className={runner1b}></td>
-										</tr>
-										<tr>
-											<td className={runner3b}></td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-
-							<div className="text-center col-md-8">
-								<table className="bso">
-									<tbody>
-									<tr>
-										<td className="stats">B</td>
-										<td className="balls">
-											<span className={bsoB1}></span>
-											<span className={bsoB2}></span>
-											<span className={bsoB3}></span>
-										</td>
-										<td className="stats">S</td>
-										<td className="strikes">
-											<span className={bsoS1}></span>
-											<span className={bsoS2}></span>
-										</td>
-										<td className="stats">O</td>
-										<td className="outs">
-											<span className={bsoO1}></span>
-											<span className={bsoO2}></span>
-										</td>
-									</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
+						{atBat}
 						<table className="linescore table table-condensed">
 							<thead>
 								<tr>
