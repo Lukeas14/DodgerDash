@@ -29,7 +29,6 @@ var Schedule = React.createClass({displayName: 'Schedule',
 	render: function(){
 		var schedule = this.sortSchedule(this.props.schedule),
 			scheduleRows = schedule.map(function(game){
-				if(typeof game.linescore == 'undefined') return false;
 
 				var now = moment(),
 					startTime = moment(game.startTime.toString()),
@@ -38,7 +37,7 @@ var Schedule = React.createClass({displayName: 'Schedule',
 					score = "";
 					status = (game.linescore) ? game.linescore.status : 'n/a';
 
-				if(now.isAfter(startTime)){
+				if(now.isAfter(startTime) && game.linescore){
 					var dodgersScore = (game.homeGame) ? game.linescore.home_team_runs : game.linescore.away_team_runs,
 						opponentScore = (game.homeGame) ? game.linescore.away_team_runs : game.linescore.home_team_runs;
 
