@@ -42,7 +42,8 @@ var Schedule = React.createClass({displayName: 'Schedule',
 						opponentScore = (game.homeGame) ? game.linescore.away_team_runs : game.linescore.home_team_runs;
 
 					if(game.linescore.status === "In Progress"){
-						score = "   " + dodgersScore + " - " + opponentScore;
+						score = "In Progress";
+						//score = "   " + dodgersScore + " - " + opponentScore;
 					}
 					else if(game.linescore.status === "Postponed"){
 						score = "Postponed";
