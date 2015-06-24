@@ -57,26 +57,41 @@ var CurrentGame = React.createClass({displayName: 'CurrentGame',
 			inningStatus = (game.linescore.inning_state === 'Top') ? "\u25B2" : "\u25BC";
 			inning = game.linescore.inning;
 
-		if(game.homeGame){
-			teamCurrentPlayer = (game.linescore.inning_state === "Bottom" || game.linescore.inning_state === "End") ? game.linescore.current_batter : game.linescore.current_pitcher;
+		//Get team current player
+		if(game.linescore.inning_state === "Bottom"){
+			teamCurrentPlayer = (game.homeGame) ? game.linescore.current_batter : game.linescore.current_pitcher;
+		}
+		else if(game.linescore.inning_state === "Top"){
+			teamCurrentPlayer = (game.homeGame) ? game.linescore.current_pitcher : game.linescore.current_batter;
+		}
+		else if(game.linescore.inning_state === "Middle"){
+			teamCurrentPlayer = (game.homeGame) ? game.linescore.due_up_batter : game.linescore.opposing_pitcher;
 		}
 		else{
-			teamCurrentPlayer = (game.linescore.inning_state === "Bottom" || game.linescore.inning_state === "End") ? game.linescore.current_pitcher : game.linescore.current_batter;
+			teamCurrentPlayer = (game.homeGame) ? game.linescore.opposing_pitcher : game.linescore.due_up_batter;
 		}
 		teamCurrentPlayerImg = "http://mlb.mlb.com/images/players/525x330/" + teamCurrentPlayer.id + ".jpg";
 
-		opponentName = (game.homeGame) ? game.linescore.away_team_name : game.linescore.home_team_name,
-		opponentAbbrv = (game.homeGame) ? game.linescore.away_name_abbrev : game.linescore.home_name_abbrev,
-		opponentWins = (game.homeGame) ? game.linescore.away_win : game.linescore.home_win,
-		opponentLosses = (game.homeGame) ? game.linescore.away_loss : game.linescore.home_loss,
-		opponentRuns = (game.homeGame) ? game.linescore.away_team_runs : game.linescore.home_team_runs,
-		opponentHits = (game.homeGame) ? game.linescore.away_team_hits : game.linescore.home_team_hits,
-		opponentErrors = (game.homeGame) ? game.linescore.away_team_errors : game.linescore.home_team_errors
-		if(game.homeGame){
-			opponentCurrentPlayer = (game.linescore.inning_state === "Bottom" || game.linescore.inning_state === "End") ? game.linescore.current_pitcher : game.linescore.current_batter;
+		var opponentName = (game.homeGame) ? game.linescore.away_team_name : game.linescore.home_team_name,
+			opponentAbbrv = (game.homeGame) ? game.linescore.away_name_abbrev : game.linescore.home_name_abbrev,
+			opponentWins = (game.homeGame) ? game.linescore.away_win : game.linescore.home_win,
+			opponentLosses = (game.homeGame) ? game.linescore.away_loss : game.linescore.home_loss,
+			opponentRuns = (game.homeGame) ? game.linescore.away_team_runs : game.linescore.home_team_runs,
+			opponentHits = (game.homeGame) ? game.linescore.away_team_hits : game.linescore.home_team_hits,
+			opponentErrors = (game.homeGame) ? game.linescore.away_team_errors : game.linescore.home_team_errors;
+
+		//Get opponent current player
+		if(game.linescore.inning_state === "Bottom"){
+			opponentCurrentPlayer = (game.homeGame) ? game.linescore.current_pitcher : game.linescore.current_batter;
+		}
+		else if(game.linescore.inning_state === "Top"){
+			opponentCurrentPlayer = (game.homeGame) ? game.linescore.current_batter : game.linescore.current_pitcher;
+		}
+		else if(game.linescore.inning_state === "Middle"){
+			opponentCurrentPlayer = (game.homeGame) ? game.linescore.opposing_pitcher : game.linescore.due_up_batter;
 		}
 		else{
-			opponentCurrentPlayer = (game.linescore.inning_state === "Bottom" || game.linescore.inning_state === "End") ? game.linescore.current_batter : game.linescore.current_pitcher;
+			opponentCurrentPlayer = (game.homeGame) ? game.linescore.due_up_batter : game.linescore.opposing_pitcher;
 		}
 		opponentCurrentPlayerImg = "http://mlb.mlb.com/images/players/525x330/" + opponentCurrentPlayer.id + ".jpg";
 
@@ -139,8 +154,14 @@ var CurrentGame = React.createClass({displayName: 'CurrentGame',
 						</div>;
 		}
 		else {
-			var atBatText = (game.linescore.inning_state) ? game.linescore.inning_state + " of the " + this.getOrdinalNumber(game.linescore.inning) + " inning." : "",
-				atBat = <div className="text-center at-bat">{atBatText}</div>;
+			if(game.linescore.status === "Warmup"){
+				atBatText = "Warmup.";
+			}
+			else {
+				atBatText = (game.linescore.inning_state) ? game.linescore.inning_state + " of the " + this.getOrdinalNumber(game.linescore.inning) + " inning." : "";
+			}
+
+			atBat = <div className="text-center at-bat">{atBatText}</div>;
 		}
 
 		return(
