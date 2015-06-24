@@ -1,16 +1,18 @@
-//var Schedule = require('./Schedule.react');
-
 var Dashboard = React.createClass({displayName: 'Dashboard',
+	loadingTeam: false,
 	loadTeam: function(){
-		$.ajax({
-			url: '/getTeam/119',
-			dataType: 'json',
-			cache: false,
-			success: function(data){
+		if(!loadingTeam) {
+			loadingTeam = true;
+			$.ajax({
+				url: '/getTeam/119',
+				dataType: 'json',
+				cache: false
+			}).done(function(data){
 				this.setState({team: data});
-				console.log('loadTeam', data);
-			}.bind(this)
-		});
+			}).always(function(){
+				loadingTeam = false;
+			});
+		}
 	},
 	getInitialState: function(){
 		return {
