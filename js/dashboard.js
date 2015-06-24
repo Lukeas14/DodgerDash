@@ -1,16 +1,18 @@
 var Dashboard = React.createClass({displayName: 'Dashboard',
 	loadingTeam: false,
 	loadTeam: function(){
-		if(!loadingTeam) {
-			loadingTeam = true;
+		var self = this;
+
+		if(!this.loadingTeam) {
+			this.loadingTeam = true;
 			$.ajax({
 				url: '/getTeam/119',
 				dataType: 'json',
 				cache: false
 			}).done(function(data){
-				this.setState({team: data});
+				self.setState({team: data});
 			}).always(function(){
-				loadingTeam = false;
+				self.loadingTeam = false;
 			});
 		}
 	},
