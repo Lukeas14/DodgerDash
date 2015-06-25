@@ -148,8 +148,8 @@ var CurrentGame = React.createClass({displayName: 'CurrentGame',
 								</table>
 							</div>
 							<div className="text-center col-md-2 current-inning stats">
-								<span className="inning-status">{{ inningStatus }}</span>
-								{{ inning }}
+								<span className="inning-status">{inningStatus}</span>
+								{inning}
 							</div>
 						</div>;
 		}
