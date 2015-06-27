@@ -56,7 +56,7 @@ var CurrentGame = React.createClass({displayName: 'CurrentGame',
 			else{
 				teamCurrentPlayer = (game.linescore.inning_state === "Bottom" || game.linescore.inning_state === "End") ? game.linescore.current_pitcher : game.linescore.current_batter;
 			}
-			teamCurrentPlayerImg = "http://mlb.mlb.com/images/players/525x330/" + teamCurrentPlayer.id + ".jpg";
+			teamCurrentPlayerImg = (!teamCurrentPlayer) ? teamLogo : "http://mlb.mlb.com/images/players/525x330/" + teamCurrentPlayer.id + ".jpg";
 
 			opponentName = (game.homeGame) ? game.linescore.away_team_name : game.linescore.home_team_name,
 			opponentAbbrv = (game.homeGame) ? game.linescore.away_name_abbrev : game.linescore.home_name_abbrev,
@@ -71,7 +71,7 @@ var CurrentGame = React.createClass({displayName: 'CurrentGame',
 			else{
 				opponentCurrentPlayer = (game.linescore.inning_state === "Bottom" || game.linescore.inning_state === "End") ? game.linescore.current_batter : game.linescore.current_pitcher;
 			}
-			opponentCurrentPlayerImg = "http://mlb.mlb.com/images/players/525x330/" + opponentCurrentPlayer.id + ".jpg";
+			opponentCurrentPlayerImg = (!opponentCurrentPlayer) ? opponentLogo : "http://mlb.mlb.com/images/players/525x330/" + opponentCurrentPlayer.id + ".jpg";
 
 			if(game.linescore.inning_state !== "Middle" || game.linescore.inning_state !== "End") {
 				var runner1b = classNames({'active': game.linescore.runner_on_1b});
