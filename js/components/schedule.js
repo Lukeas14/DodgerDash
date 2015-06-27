@@ -29,6 +29,7 @@ var Schedule = React.createClass({displayName: 'Schedule',
 	render: function(){
 		var schedule = this.sortSchedule(this.props.schedule),
 			scheduleRows = schedule.map(function(game){
+
 				var now = moment(),
 					startTime = moment(game.startTime.toString()),
 					gameName = game.name.split(" at "),
@@ -36,12 +37,13 @@ var Schedule = React.createClass({displayName: 'Schedule',
 					score = "";
 					status = (game.linescore) ? game.linescore.status : 'n/a';
 
-				if(now.isAfter(startTime)){
+				if(now.isAfter(startTime) && game.linescore){
 					var dodgersScore = (game.homeGame) ? game.linescore.home_team_runs : game.linescore.away_team_runs,
 						opponentScore = (game.homeGame) ? game.linescore.away_team_runs : game.linescore.home_team_runs;
 
 					if(game.linescore.status === "In Progress"){
-						score = "   " + dodgersScore + " - " + opponentScore;
+						score = "In Progress";
+						//score = "   " + dodgersScore + " - " + opponentScore;
 					}
 					else if(game.linescore.status === "Postponed"){
 						score = "Postponed";

@@ -1,16 +1,20 @@
-//var Schedule = require('./Schedule.react');
-
 var Dashboard = React.createClass({displayName: 'Dashboard',
+	loadingTeam: false,
 	loadTeam: function(){
-		$.ajax({
-			url: '/getTeam/119',
-			dataType: 'json',
-			cache: false,
-			success: function(data){
-				this.setState({team: data});
-				console.log('loadTeam', data);
-			}.bind(this)
-		});
+		var self = this;
+
+		if(!this.loadingTeam) {
+			this.loadingTeam = true;
+			$.ajax({
+				url: '/getTeam/119',
+				dataType: 'json',
+				cache: false
+			}).done(function(data){
+				self.setState({team: data});
+			}).always(function(){
+				self.loadingTeam = false;
+			});
+		}
 	},
 	getInitialState: function(){
 		return {
@@ -19,7 +23,7 @@ var Dashboard = React.createClass({displayName: 'Dashboard',
 	},
 	componentDidMount: function(){
 		this.loadTeam();
-		setInterval(this.loadTeam, 10000);
+		setInterval(this.loadTeam, 5000);
 	},
 	render: function(){
 		if(_.isEmpty(this.state.team.currentGame)){
