@@ -7,9 +7,6 @@ var http = require('http'),
 	log = require('./lib/log');
 
 cacheManager.initCache();
-setInterval(function() {
-	cacheManager.initCache();
-}, 600000);
 
 var app = express();
 
