@@ -25,13 +25,18 @@ var CurrentGame = React.createClass({displayName: 'CurrentGame',
 
 		//Linescore
 		if(!(game.linescore.linescore instanceof Array)){
-			game.linescore.linescore = [
-				{
-					'away_inning_runs': 0,
-					'home_inning_runs': '',
-					'inning': 1
-				}
-			]
+			if(game.linescore.linescore instanceof Object){
+				game.linescore.linescore = [game.linescore.linescore];
+			}
+			else {
+				game.linescore.linescore = [
+					{
+						'away_inning_runs': 0,
+						'home_inning_runs': '',
+						'inning': 1
+					}
+				];
+			}
 		}
 		var maxInnings = (game.linescore.inning > 9) ? game.linescore.inning : 9,
 			linescoreHeader = _.range(0, maxInnings).map(function(inning){
