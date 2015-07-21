@@ -58,6 +58,7 @@ var CurrentGame = React.createClass({displayName: 'CurrentGame',
 			teamLosses = (game.homeGame) ? game.linescore.home_loss : game.linescore.away_loss,
 			teamRuns = (game.homeGame) ? game.linescore.home_team_runs : game.linescore.away_team_runs,
 			teamHits = (game.homeGame) ? game.linescore.home_team_hits : game.linescore.away_team_hits,
+
 			teamErrors = (game.homeGame) ? game.linescore.home_team_errors : game.linescore.away_team_errors,
 			inningStatus = (game.linescore.inning_state === 'Top') ? "\u25B2" : "\u25BC";
 			inning = game.linescore.inning;
@@ -75,7 +76,7 @@ var CurrentGame = React.createClass({displayName: 'CurrentGame',
 		else{
 			teamCurrentPlayer = (game.homeGame) ? game.linescore.opposing_pitcher : game.linescore.due_up_batter;
 		}
-		teamCurrentPlayerImg = "http://mlb.mlb.com/images/players/525x330/" + teamCurrentPlayer.id + ".jpg";
+		teamCurrentPlayerImg = (!teamCurrentPlayer) ? teamLogo : "http://mlb.mlb.com/images/players/525x330/" + teamCurrentPlayer.id + ".jpg";
 
 		var opponentName = (game.homeGame) ? game.linescore.away_team_name : game.linescore.home_team_name,
 			opponentAbbrv = (game.homeGame) ? game.linescore.away_name_abbrev : game.linescore.home_name_abbrev,
@@ -98,7 +99,7 @@ var CurrentGame = React.createClass({displayName: 'CurrentGame',
 		else{
 			opponentCurrentPlayer = (game.homeGame) ? game.linescore.due_up_batter : game.linescore.opposing_pitcher;
 		}
-		opponentCurrentPlayerImg = "http://mlb.mlb.com/images/players/525x330/" + opponentCurrentPlayer.id + ".jpg";
+		opponentCurrentPlayerImg = (!opponentCurrentPlayer) ? opponentLogo : "http://mlb.mlb.com/images/players/525x330/" + opponentCurrentPlayer.id + ".jpg";
 
 		if(game.linescore.inning_state !== "Middle" || game.linescore.inning_state !== "End") {
 			var runner1b = classNames({'active': game.linescore.runner_on_1b}),
