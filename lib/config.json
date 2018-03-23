@@ -26,7 +26,7 @@
 			}
 		},
 		"team_schedule_old": "http://mlb.mlb.com/soa/ical/schedule.csv?team_id=%d&season=%d",
-		"team_schedule": "http://mlb.mlb.com/ticketing-client/csv/EventTicketPromotionPrice.tiksrv?team_id=%d&display_in=singlegame&ticket_category=Tickets&site_section=Default&sub_category=Default&leave_empty_games=true&event_type=T&event_type=Y"
+		"team_schedule": "http://www.ticketing-client.com/ticketing-client/csv/EventTicketPromotionPrice.tiksrv?team_id=%d&display_in=singlegame&ticket_category=Tickets&site_section=Default&sub_category=Default&leave_empty_games=true&event_type=T"
 	},
 	"cache": {
 		"intervals": {
