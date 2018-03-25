@@ -2,7 +2,17 @@
 	"activeTeams": [
 		119
 	],
+	"sportIds": {
+		"mlb": 1
+	},
 	"apis": {
+		"stats": {
+			"base_uri": "http://statsapi.mlb.com/api/v1/",
+			"uris": {
+				"season": "seasons/%d?sportId=1",
+				"teamSchedule": "schedule?sportId=1&teamId=%d&startDate=%s&endDate=%s"
+			}
+		},
 		"gameday": {
 			"base_uri": "http://gd2.mlb.com/components/game/",
 			"uris": {
