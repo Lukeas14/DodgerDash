@@ -1,7 +1,9 @@
 var Batters = React.createClass({displayName: 'Batters',
 	sortBatters: function(battersObj){
 		var batters = [];
+		return _.values(battersObj);
 		batters = _.sortBy(_.filter(_.values(battersObj), function(player){
+			console.log('sorting', player.name_full);
 			return player.battingStats && parseInt(player.battingStats.s_ab) !== 0;
 		}), function(player){
 			return -(player.battingStats.avg);
@@ -16,8 +18,10 @@ var Batters = React.createClass({displayName: 'Batters',
 		};
 	},
 	render: function(){
+		console.log('render batters', this.props);
 		var players = this.sortBatters(this.props.players);
 		var batterRows = players.map(function(batter){
+			batter.battingStats = {};
 			return(
 				<tr>
 					<td className="col-xs-3">

@@ -32,8 +32,7 @@ var Schedule = React.createClass({displayName: 'Schedule',
 
 				var now = moment(),
 					startTime = moment(game.startTime.toString()),
-					gameName = game.name.split(" at "),
-					name = (game.homeGame) ? gameName[0] : "@ " + gameName[1],
+					name = game.name + "woiefjwie",
 					score = "";
 					status = (game.linescore) ? game.linescore.status : 'n/a';
 
